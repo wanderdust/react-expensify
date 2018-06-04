@@ -13,7 +13,7 @@ module.exports = (env) => {
         entry: "./src/app.js",
         // The final file where compiled data is sent to (bundle.js).
         output: {
-            path: path.join(__dirname, 'public'),
+            path: path.join(__dirname, "public", "dist"),
             filename: "bundle.js"
         },
         module: {
@@ -59,9 +59,10 @@ module.exports = (env) => {
         devtool: isProduction ? "source-map" : "inline-source-map",
         // Webpack server for development.
         devServer: {
-            contentBase: path.join(__dirname, 'public'),
+            contentBase: path.join(__dirname, "public", "dist"),
             // We tell the server we will be using React for routing and not the server.
-            historyApiFallback: true
+            historyApiFallback: true,
+            publicPath: "/dist/"
         }
     }
 };
