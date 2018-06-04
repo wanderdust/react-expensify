@@ -1,5 +1,5 @@
 const path = require("path");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 //We wrap all in a function to get access to the env variable.
 module.exports = (env) => {
@@ -13,7 +13,7 @@ module.exports = (env) => {
         entry: "./src/app.js",
         // The final file where compiled data is sent to (bundle.js).
         output: {
-            path: path.join(__dirname, "public", "dist"),
+            path: path.join(__dirname, "public"),
             filename: "bundle.js"
         },
         module: {
@@ -34,12 +34,12 @@ module.exports = (env) => {
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
-                        loader: 'css-loader',
+                        loader: "css-loader",
                         options: {
                             sourceMap: true
                         }
                     },{
-                        loader: 'sass-loader',
+                        loader: "sass-loader",
                         options: {
                             sourceMap: true
                         }
@@ -59,10 +59,9 @@ module.exports = (env) => {
         devtool: isProduction ? "source-map" : "inline-source-map",
         // Webpack server for development.
         devServer: {
-            contentBase: path.join(__dirname, "public", "dist"),
+            contentBase: path.join(__dirname, "public"),
             // We tell the server we will be using React for routing and not the server.
-            historyApiFallback: true,
-            publicPath: "/dist/"
+            historyApiFallback: true
         }
     }
 };
