@@ -1,5 +1,4 @@
 import selectExpenses from "../../selectors/expenses";
-import { findLocalNegativePatterns } from "fast-glob/out/managers/tasks";
 import moment from "moment";
 import expenses from "../fixtures/expenses";
 

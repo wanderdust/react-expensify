@@ -10,12 +10,12 @@ export default [{
     id: "2",
     description: "Rent",
     note: "",
-    amount: 7000,
+    amount: 2000,
     createdAt: moment(0).subtract(4, "days").valueOf()
 }, {
     id: "3",
     description: "Credit card",
     note: "",
-    amount: 45000,
+    amount: 3000,
     createdAt: moment(0).add(4, "days").valueOf()
 }];

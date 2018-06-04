@@ -253,7 +253,7 @@ exports[`should render Expense form correctly should render expense form with pa
       onChange={[Function]}
       placeholder="Amount"
       type="text"
-      value="450"
+      value="30"
     />
     <withStyles(SingleDatePicker)
       anchorDirection="left"
