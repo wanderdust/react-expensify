@@ -1,5 +1,14 @@
 const path = require("path");
+const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
+
+if (process.env.NODE_ENV === "test") {
+    require("dotenv").config({ path: ".env.test" });
+} else if (process.env.NODE_ENV === "development") {
+    require("dotenv").config({ path: ".env.development" });
+}
 
 //We wrap all in a function to get access to the env variable.
 module.exports = (env) => {
@@ -13,7 +22,7 @@ module.exports = (env) => {
         entry: "./src/app.js",
         // The final file where compiled data is sent to (bundle.js).
         output: {
-            path: path.join(__dirname, "public"),
+            path: path.join(__dirname, "public", "dist"),
             filename: "bundle.js"
         },
         module: {
@@ -49,7 +58,15 @@ module.exports = (env) => {
             }]
         },
         plugins: [
-            CSSExtract
+            CSSExtract,
+            new webpack.DefinePlugin({
+                "process.env.FIREBASE_API_KEY": JSON.stringify(process.env.FIREBASE_API_KEY),
+                "process.env.FIREBASE_AUTH_DOMAIN": JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
+                "process.env.FIREBASE_DATABASE_URL": JSON.stringify(process.env.FIREBASE_DATABASE_URL),
+                "process.env.FIREBASE_PROJECT_ID": JSON.stringify(process.env.FIREBASE_PROJECT_ID),
+                "process.env.FIREBASE_STORAGE_BUCKET": JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
+                "process.env.FIREBASE_MESSAGING_SENDER_ID": JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
+            })
         ],
         /*
         * Hashmap for debugging. Shows error in pre-compiled files rather than in bundle.js.
@@ -61,7 +78,8 @@ module.exports = (env) => {
         devServer: {
             contentBase: path.join(__dirname, "public"),
             // We tell the server we will be using React for routing and not the server.
-            historyApiFallback: true
+            historyApiFallback: true,
+            publicPath: "/dist/"
         }
     }
 };
