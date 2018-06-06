@@ -70,7 +70,7 @@ module.exports = (env) => {
         ],
         /*
         * Hashmap for debugging. Shows error in pre-compiled files rather than in bundle.js.
-        * Checks isProduction to only load it for dev.
+        * If !isProduction we use a faster compiler for dev - inline-source-map.
         * source map is really slow for dev but really fast for production.
         */
         devtool: isProduction ? "source-map" : "inline-source-map",

@@ -7,6 +7,7 @@ export const addExpense = (expense) => ({
     expense
 });
 
+// ASYNC ADD EXPENSE
 export const startAddExpense = (expenseData = {}) => {
     return (dispatch) => {
         const {
@@ -38,3 +39,26 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 });
+
+//SET EXPENSES
+export const setExpenses = (expenses) => ({
+    type: "SET_EXPENSES",
+    expenses
+});
+
+//ASYNC SET EXPENSES
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        return database.ref("expenses").once("value").then((snapshot) => {
+            const expenses = [];
+
+            snapshot.forEach((childSnapshot) => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            dispatch(setExpenses(expenses));
+        });
+    }
+};
