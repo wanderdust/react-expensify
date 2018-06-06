@@ -36,7 +36,7 @@ export const removeExpense = ({id: expenseId} = {}) => ({
 //ASYNC REMOVE EXPENSE
 export const startRemoveExpense = ({id} = {}) => {
     return (dispatch) => {
-        return database.ref(`expenses/${id}`).remove().then((ref) => {
+        return database.ref(`expenses/${id}`).remove().then(() => {
             dispatch(removeExpense({id}))
         });
     };
@@ -48,6 +48,15 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 });
+
+//ASYNC EDIT EXPENSE
+export const startEditExpense = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update(updates).then(() => {
+            dispatch(editExpense(id, updates));
+        });
+    };
+};
 
 //SET EXPENSES
 export const setExpenses = (expenses) => ({
