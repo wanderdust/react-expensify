@@ -18,8 +18,11 @@ module.exports = (env) => {
     
     return {
         mode: "none",
-        // The file that is going to watch (app.js).
-        entry: "./src/app.js",
+        /*
+        * Babel-polyfill: adds support of ES6/7 features for older browsers.
+        * app.js is the entry file that gets compiled.
+        */
+        entry: ["babel-polyfill" ,"./src/app.js"],
         // The final file where compiled data is sent to (bundle.js).
         output: {
             path: path.join(__dirname, "public", "dist"),
