@@ -117,7 +117,7 @@ exports[`should render Expense form correctly should NOT set amount on invalid i
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>
@@ -245,7 +245,7 @@ exports[`should render Expense form correctly should render an error for invalid
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>
@@ -368,7 +368,7 @@ exports[`should render Expense form correctly should render expense form with pa
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>
@@ -491,7 +491,7 @@ exports[`should render Expense form correctly should render expense form without
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>
@@ -614,7 +614,7 @@ exports[`should render Expense form correctly should set amount on input change 
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>
@@ -737,7 +737,7 @@ exports[`should render Expense form correctly should set description on input ch
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>
@@ -860,7 +860,7 @@ exports[`should render Expense form correctly should set note on input change 1`
     <button
       className="button"
     >
-      Add Expense
+      Save Expense
     </button>
   </div>
 </form>

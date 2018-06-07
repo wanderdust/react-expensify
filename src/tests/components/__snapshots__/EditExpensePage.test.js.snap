@@ -11,7 +11,7 @@ exports[`should render edit expense page correctly 1`] = `
       <h1
         className="page-header__title"
       >
-        Save Expense
+        Edit Expense
       </h1>
     </div>
   </div>
